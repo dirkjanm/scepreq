@@ -76,14 +76,15 @@ class SCEPMessage(object):
                 signed_attrs = signer_info['signed_attrs']
                 signed_attrs_data = signed_attrs.dump()
                 signed_attrs_data = b'\x31' + signed_attrs_data[1:]
-
-                signer_cert.verify(
-                    signature=signer_info.native['signature'],
-                    padding_type='pkcs',
-                    digest_algorithm=hash_algo,
-                    data=signed_attrs_data
-                )
-
+                try:
+                    signer_cert.verify(
+                        signature=signer_info.native['signature'],
+                        padding_type='pkcs',
+                        digest_algorithm=hash_algo,
+                        data=signed_attrs_data
+                    )
+                except Exception as exc:
+                    logger.warning('Could not verify the signature of the message - integrity may not be guaranteed. Error: %s', str(exc))
                 # signer_cert.verify(signature=signer_info['signature'].native, padding_type='pkcs', digest_algorithm=hash_algo, data=signer_info['signed_attrs'].dump())
                 # /*
                 # * Check that the signerinfo attributes obey the attribute rules which includes

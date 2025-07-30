@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "scepreq"
-version = "0.1.1"
+version = "0.1.0"
 description = "AD CS SCEP request tool"
 authors = [
   { name = "Dirk-jan Mollema", email = "dirkjan@dirkjanm.io" }

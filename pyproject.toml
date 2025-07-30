@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scepreq"
+version = "0.1.1"
+description = "AD CS SCEP request tool"
+authors = [
+  { name = "Dirk-jan Mollema", email = "dirkjan@dirkjanm.io" }
+]
+urls = { "Homepage" = "https://github.com/dirkjanm/scepreq/" }
+requires-python = ">=3.6"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = [
+  "requests",
+  "cryptography",
+  "oscrypto @ git+https://github.com/wbond/oscrypto.git@1547f535001ba568b239b8797465536759c742a3#oscrypto",
+  "asn1crypto",
+  "certbuilder",
+  "csrbuilder"
+]
+
+[tool.setuptools.packages.find]
+include = ["scepreq"]
+  
+[project.scripts]
+scepreq = "scepreq.main:main"

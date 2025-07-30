@@ -144,14 +144,6 @@ class ScepCSRBuilder(CSRBuilder):
                 'values': [extensions]
             })
 
-
-        # alt_sid = 'S-1-5-21-1414223725-1888795230-1473887622-1000'
-        # # alt_sid = None
-        # alt_dns = 'hybrid-dc\x00.hybrid.iminyour.cloud'
-        # # alt_upn = 'hybrid'
-        # alt_upn = None
-
-
         if self.alt_dns or self.alt_upn or self.alt_sid or self.alt_sid_url or self.alt_email:
             general_names = []
 
@@ -196,8 +188,6 @@ class ScepCSRBuilder(CSRBuilder):
                         }
                     )
                 )
-            # general_names = []
-
             # Add SID URL
             if self.alt_sid_url:
                 if isinstance(self.alt_sid_url, bytes):

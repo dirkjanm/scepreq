@@ -8,6 +8,8 @@ scepreq is a tool that is intended to talk with AD CS NDES servers over the SCEP
 
 It can be installed via pypi with `pip install scepreq` or with an installer such as pip after cloning the GitHub repository with `pip install .`.
 
+If you get `oscrypto` or `libcrypto` errors, make sure to install `oscrypto` from GitHub with `pip uninstall oscrypto && pip install git+https://github.com/wbond/oscrypto.git@1547f535001ba568b239b8797465536759c742a3#oscrypto`.
+
 ```
 (scepreq) ➜  scepreq git:(main) ✗ scepreq -h
 usage: scepreq [-h] -u URL [--output-cert OUTPUT_CERT] [--output-key OUTPUT_KEY] [--output-csr OUTPUT_CSR] -s SUBJECT [--key-usage KEY_USAGE]

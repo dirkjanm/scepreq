@@ -16,7 +16,7 @@ license-files = ["LICENSE"]
 dependencies = [
   "requests",
   "cryptography",
-  "oscrypto @ git+https://github.com/wbond/oscrypto.git@1547f535001ba568b239b8797465536759c742a3#oscrypto",
+  "oscrypto",
   "asn1crypto",
   "certbuilder",
   "csrbuilder"

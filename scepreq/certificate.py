@@ -1,5 +1,7 @@
 from asn1crypto import x509, pem
 from oscrypto import asymmetric, keys
+import hashes
+import binascii
 
 from cryptography import x509 as crypto_x509
 from cryptography.hazmat.backends import default_backend
@@ -81,6 +83,15 @@ class Certificate:
     @property
     def end_date(self):
         return self._crypto_certificate.not_valid_after
+
+    @property
+    def thumbprint(self):
+        certbytes = asymmetric.dump_certificate(self._certificate, encoding='der')
+        digest = hashes.Hash(hashes.SHA1())
+        digest.update(certbytes)
+        thumbprint = digest.finalize()
+        hfthumbprint = binascii.hexlify(thumbprint).decode('utf-8').upper()
+        return hfthumbprint
 
     @property
     def key_usage(self):

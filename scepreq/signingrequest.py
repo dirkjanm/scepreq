@@ -72,6 +72,7 @@ class ScepCSRBuilder(CSRBuilder):
         self.alt_sid = None
         self.alt_upn = None
         self.alt_sid_url = None
+        self.alt_url = None
         self.alt_dns = None
         self.alt_email = None
 
@@ -199,6 +200,17 @@ class ScepCSRBuilder(CSRBuilder):
                     )
                 )
 
+            # Add regular URL
+            if self.alt_url:
+                if isinstance(self.alt_url, bytes):
+                    self.alt_url = self.alt_url.decode()
+
+                general_names.append(
+                    asn1x509.GeneralName(
+                        {"uniform_resource_identifier": self.alt_url}
+                    )
+                )
+
             # Create SAN extension
             san_extension2 = asn1x509.Extension(
                 {"extn_id": "subject_alt_name", "extn_value": general_names}
@@ -312,7 +324,7 @@ class SigningRequest:
         return PrivateKey.from_der(der)
 
     @classmethod
-    def generate_csr(cls, dn, key_usage, extended_key_usage, password, private_key=None, alt_dns=None, alt_sid=None, alt_sid_url=None, alt_email=None, alt_upn=None):
+    def generate_csr(cls, dn, key_usage, extended_key_usage, password, private_key=None, alt_dns=None, alt_sid=None, alt_sid_url=None, alt_url=None, alt_email=None, alt_upn=None):
         if private_key is None:
             private_key = cls.generate_pair()
 
@@ -329,6 +341,7 @@ class SigningRequest:
         builder.alt_upn = alt_upn
         builder.alt_sid = alt_sid
         builder.alt_sid_url = alt_sid_url
+        builder.alt_url = alt_url
         builder.alt_email = alt_email
         builder.key_usage = key_usage #[u'digital_signature', u'key_encipherment']
 

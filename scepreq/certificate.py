@@ -1,9 +1,9 @@
 from asn1crypto import x509, pem
 from oscrypto import asymmetric, keys
-import hashes
 import binascii
 
 from cryptography import x509 as crypto_x509
+from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.backends import default_backend
 
 from .privatekey import PrivateKey

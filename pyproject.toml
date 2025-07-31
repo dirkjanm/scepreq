@@ -1,18 +1,17 @@
 [build-system]
-requires = ["setuptools>=77", "wheel"]
+requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "scepreq"
-version = "0.1.0"
+version = "0.1.1"
 description = "AD CS SCEP request tool"
 authors = [
   { name = "Dirk-jan Mollema", email = "dirkjan@dirkjanm.io" }
 ]
 urls = { "Homepage" = "https://github.com/dirkjanm/scepreq/" }
-requires-python = ">=3.6"
-license = "MIT"
-license-files = ["LICENSE"]
+requires-python = ">=3.8"
+license = { file = "LICENSE" }
 dependencies = [
   "requests",
   "cryptography",

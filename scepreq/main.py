@@ -99,7 +99,7 @@ def setup_argparse() -> argparse.Namespace:
                         help='SID for Subject Alternative Name (added as AD SID security extension)')
     parser.add_argument('--sid-url', 
                         help='SID URL for Subject Alternative Name (added as tag:microsoft.com,2022-09-14:sid:<sid> URL, used for strong mapping)')
-    parser.add_argument('--url', 
+    parser.add_argument('--san-url', 
                         help='URL Subject Alternative Name')
     parser.add_argument('--email', 
                         help='Email address for Subject Alternative Name')
